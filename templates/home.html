@@ -1,0 +1,7 @@
+{% extends 'base.html' %}{% block title %}Open Positions | Employee History{% endblock %}{% block content %}
+<section class="hero"><p class="eyebrow">INTERNSHIP APPLICATION</p><h1>Find the right role. Tell us about yourself.</h1><p>Select an opening to review responsibilities and start your application.</p></section>
+<div class="grid">
+{% for id, role in roles.items() %}<article class="card"><div class="role-icon">{{ 'AI' if id == 'aiml' else 'M' }}</div><h2>{{ role.title }}</h2><p>{{ role.tagline }}</p><ul>{% for item in role.responsibilities[:3] %}<li>{{ item }}</li>{% endfor %}</ul><a class="button" href="{{ url_for('role', role_id=id) }}">View role →</a></article>{% endfor %}
+</div>
+<div class="notice"><strong>Privacy:</strong> this application is designed to run locally. Applicant records and resumes are saved to the local SQLite database and <code>uploads/</code> folder, not to this GitHub repository.</div>
+{% endblock %}
