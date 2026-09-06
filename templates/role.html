@@ -1,0 +1,4 @@
+{% extends 'base.html' %}{% block title %}{{ role.title }} | Employee History{% endblock %}{% block content %}
+<a class="back" href="{{ url_for('home') }}">← All openings</a><section class="role-header"><p class="eyebrow">OPEN POSITION</p><h1>{{ role.title }}</h1><p>{{ role.tagline }}</p></section>
+<div class="two-col"><section class="panel"><h2>About the role</h2><p>{{ role.description }}</p><h2>Responsibilities</h2><ul>{% for x in role.responsibilities %}<li>{{ x }}</li>{% endfor %}</ul></section><aside class="panel"><h2>Tech / tools</h2><div class="tags">{% for x in role.tech_stack %}<span>{{ x }}</span>{% endfor %}</div><h2>Useful skills</h2><div class="tags">{% for x in role.skills %}<span>{{ x }}</span>{% endfor %}</div><a class="button full" href="{{ url_for('apply', role_id=role_id) }}">Start application</a></aside></div>
+{% endblock %}
